@@ -6,8 +6,8 @@ from email.mime.text import MIMEText
 
 def confirms():
     settings.search()
-    me = "crosnash@gmail.com"
-    my_password = r"Mondadori3"
+    me = "automation_email"
+    my_password = r"automation_password"
     you = (settings.ema)
 
     msg = MIMEMultipart('alternative')
@@ -40,8 +40,8 @@ def confirms():
 
 def lastemail2():
     settings.search()
-    me = "crosnash@gmail.com"
-    my_password = r"Mondadori3"
+    me = "automation_email"
+    my_password = r"automation_password"
     you = (settings.ema)
 
     msg = MIMEMultipart('alternative')
@@ -76,8 +76,8 @@ def lastemail2():
 
 def lastemail():
     settings.search()
-    me = "crosnash@gmail.com"
-    my_password = r"Mondadori3"
+    me = "automation_email"
+    my_password = r"automation_password"
     you = (settings.userem)
 
     msg = MIMEMultipart('alternative')
