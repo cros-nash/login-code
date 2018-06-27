@@ -25,19 +25,19 @@ def code():
         global done
         done = True
         global username
-        print("Correct code.\")
+        print("Correct code.")
         username = settings.new
         after()
-        break
+        
     elif pinc == "R":
         settings.random()
         emailsender.confirms()
         code()
-        break
+        
     elif pinc != actualpin:
         print("Wrong code, try again")
         code()
-        break
+        
     else:
         print("Something went wrong...")
         main()
