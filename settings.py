@@ -4,6 +4,7 @@ import csv
 import re
 new = ""
 ema = ""
+
 def init():
     global done1
     done1 = False
@@ -41,18 +42,19 @@ def newpassword():
     elif len(pas) < 6:
         print("Password has to be longer than six characters")
         newpassword()
-    elif re.match(".[A-Z{1,}0-9{2,}]", pas):
+    elif re.findall("[A-Z{1,}0-9{2,}]", pas):
         newemail()
-    elif bool(re.match("^[A-Z{1,}0-9{2,}]", pas)) == False:
+    elif bool(re.findall("[A-Z{1,}0-9{2,}]", pas)) == False:
         print("Password has to contain 1 Capital letter and 2 Numbers")
         newpassword()
             
 def newemail():
     global ema
     ema = input("Email: ")
-    if re.match("[@gmail.com+$]", ema):
+    r1 = re.compile("@gmail\.com")
+    if r1.search(ema):
         random()
-    elif bool(re.match("[@gmail.com+$]", ema)) == False:
+    elif bool(r1.search(ema)) == False:
         print("Please retype email address")
         newemail()
 
