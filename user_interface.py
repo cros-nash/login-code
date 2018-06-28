@@ -117,10 +117,12 @@ main()
     # Welcome message has to say,"Welcome {username}" /
     # mame has to be letters or numbers, no symbols except ( _ or . ) /
     # mame has to be 4+ letters long /
-    # email has to end with @gmail.com 
+    # email has to end with @gmail.com /
     # password has to be longer than 6 letters /
-        # Contain 1 capital letter and 2 numbers
-    # password cannot be the same as username
+        # Contains:
+            # 1 capital letter
+            # 2 numbers
+    # password cannot be the same as username /
     # Retype:
         # compare passwords
         # compare email
@@ -132,9 +134,9 @@ main()
     # Save pin with details /
     # Send pin number to user /
     # Ask user to confirm pin number /
-    # Compare pins 
     # Send account info after pin confirmation /
     # If resend, replace original pin with new pin
+    # Replace table pin
 # Once login
     # Display information
     # Allow to edit information
