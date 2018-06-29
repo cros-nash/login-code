@@ -119,7 +119,7 @@ main()
     # mame has to be 4+ letters long /
     # email has to end with @gmail.com /
     # password has to be longer than 6 letters /
-        # Contains:
+        # Password contains:
             # 1 capital letter
             # 2 numbers
     # password cannot be the same as username /
