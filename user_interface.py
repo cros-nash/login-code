@@ -27,6 +27,11 @@ def code():
         global username
         print("Correct code.")
         username = settings.new
+        accounts = [settings.new,settings.pas,settings.ema]
+        with open('accountlist.csv','a',newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(accounts) # Writes a row with name, password and email
+        emailsender.confirms()
         after()
         
     elif pinc == "R":
@@ -59,10 +64,6 @@ def valid():
         confirm = input("Create new account? (Y/N): ").title() # Asks to create new account, sets answer to capital
         if confirm == "Y":
             settings.newusername()
-            accounts = [settings.new,settings.pas,settings.ema,settings.pin]
-            with open('accountlist.csv','a',newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow(accounts) # Writes a row with name, password and email
             print("Your confirmation code will be sent shortly")
             emailsender.confirms()
             code()
@@ -129,14 +130,17 @@ main()
 # Send emails from python: /
     # Send email address to user's email address /
     # Send email with credentials /
-# Confirm email address - using random generated pin
+# Confirm email address - using random generated pin /
     # Make random 6 digit pin /
     # Save pin with details /
     # Send pin number to user /
     # Ask user to confirm pin number /
     # Send account info after pin confirmation /
-    # If resend, replace original pin with new pin
-    # Replace table pin
+    # If resend, replace original pin with new pin /
+# If forget credentials
+    # Use email to send random code
+    # Ask to enter new password twice
+    # Edit account credentials on csv
 # Once login
     # Display information
     # Allow to edit information
