@@ -31,7 +31,6 @@ def code():
         with open('accountlist.csv','a',newline='') as f:
             writer = csv.writer(f)
             writer.writerow(accounts) # Writes a row with name, password and email
-        emailsender.confirms()
         after()
         
     elif pinc == "R":
@@ -124,9 +123,9 @@ main()
             # 1 capital letter
             # 2 numbers
     # password cannot be the same as username /
-    # Retype:
-        # compare passwords
-        # compare email
+    # Retype: /
+        # compare passwords /
+        # compare email /
 # Send emails from python: /
     # Send email address to user's email address /
     # Send email with credentials /
