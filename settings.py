@@ -3,14 +3,19 @@ from random import randint
 import csv
 import re
 
+new = ""
+ema = ""
+
 def init():
+    global imame
+    imame = ""
+    global ipass
+    ipass = ""
     global done1
     done1 = False
     global done2
     done2 = False
-    global imame
     imame = input("Username or Email: ")
-    global ipass
     ipass = input("Password: ")
 
 def random():
