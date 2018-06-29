@@ -2,8 +2,6 @@ import random
 from random import randint
 import csv
 import re
-new = ""
-ema = ""
 
 def init():
     global done1
@@ -35,6 +33,7 @@ def newusername():
         
 def newpassword():
     global pas
+    r1 = re.compile("[A-Z{1,}0-9{2,}]?")
     pas = input("Password: ")
     if pas == new:
         print("Password cannot be the same as username")
@@ -42,21 +41,41 @@ def newpassword():
     elif len(pas) < 6:
         print("Password has to be longer than six characters")
         newpassword()
-    elif re.findall("[A-Z{1,}0-9{2,}]", pas):
-        newemail()
-    elif bool(re.findall("[A-Z{1,}0-9{2,}]", pas)) == False:
+    elif r1.search(pas):
+        confirmpassword()
+    elif bool(r1.search(pas)) == False:
         print("Password has to contain 1 Capital letter and 2 Numbers")
         newpassword()
+
+def confirmpassword():
+    confirmpas = input("Verify password: ")
+    if confirmpas == pas:
+        newemail()
+    elif confirmpas != pas:
+        print("Passwords do not match.")
+        confirmpassword()
+    else:
+        print("Something went wrong")
             
 def newemail():
     global ema
     ema = input("Email: ")
     r1 = re.compile("@gmail\.com")
     if r1.search(ema):
-        random()
+        confirmemail()
     elif bool(r1.search(ema)) == False:
         print("Please retype email address")
         newemail()
+
+def confirmemail():
+    confirmema = input("Verify email: ")
+    if confirmema == ema:
+        random()
+    elif confirmema != ema:
+        print("Emails do not match.")
+        confirmemail()
+    else:
+        print("Something went wrong")
 
 def search():
     with open('accountlist.csv','r') as f:
