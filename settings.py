@@ -38,7 +38,7 @@ def newusername():
         
 def newpassword():
     global pas
-    r1 = re.compile("[A-Z{1,}0-9{2,}]?")
+    r1 = re.compile("A-Z{1,}\d{2,}")
     pas = input("Password: ")
     if pas == new:
         print("Password cannot be the same as username")
@@ -51,6 +51,8 @@ def newpassword():
     elif bool(r1.search(pas)) == False:
         print("Password has to contain 1 Capital letter and 2 Numbers")
         newpassword()
+    else:
+        print("something wong")
 
 def confirmpassword():
     confirmpas = input("Verify password: ")
@@ -59,8 +61,6 @@ def confirmpassword():
     elif confirmpas != pas:
         print("Passwords do not match.")
         confirmpassword()
-    else:
-        print("Something went wrong")
             
 def newemail():
     global ema
@@ -100,3 +100,9 @@ def search():
                 pa = row[1]
                 global em
                 em = row[2]
+
+def confirmemailpin():
+    global CName
+    CName = ""
+    global CEmail
+    CEmail = ""
