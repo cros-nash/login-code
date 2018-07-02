@@ -1,8 +1,10 @@
 import csv # Imports CSV module, to be able to make tables
 import smtplib # Imports module to be able to send emails
+import re
 # __init__.py file needs to be made to link python files
 import emailsender # Imports emailsender.py
 import settings # Imports settings file with global variables
+import forget
 
 # Sets all variables needed later to False
 
@@ -60,7 +62,8 @@ def valid():
                     passd = True
                         
     if mame == False: # If username hasn't already been made
-        confirm = input("Create new account? (Y/N): ").title() # Asks to create new account, sets answer to capital
+        confirm = input("Create new account? (Y/N), Forgot password? (F): ").title() # Asks to create new account, sets answer to capital
+        
         if confirm == "Y":
             settings.newusername()
             print("Your confirmation code will be sent shortly")
@@ -70,6 +73,9 @@ def valid():
         elif confirm == "N":
             main()  # Re-does login process
 
+        elif confirm == "F":
+            forget.main()
+        
         else:
             print("That is not a valid option")
             valid() # If wrong key pressed, re-does confirmation
@@ -89,18 +95,24 @@ def valid():
         if settings.done1 == False or settings.done2 == False:
             print('\nIncorrect credentials, Please try again...\n')
             main()
-                       
+ 
+
+
+                      
 def after():
     if mame == True and passd == True:
         print("\nWelcome {}!\nYour login info has been emailed to you.".format(username))
         emailsender.lastemail()
+        print("work")
     elif done == True:
         print("\nWelcome {}!\nYour login info has been emailed to you.".format(username))
-        emailsender.lastemail2()
+        #emailsender.lastemail2()
+        print("works")
     
 def main():
     settings.init()
     valid()
+    
 main()
 
 # Make login code: /
@@ -109,7 +121,6 @@ main()
     # Read table /
     # Reset table /
     # Redo credentials if incorrect /
-    # Make forgot Username & Password function /
 # Link python files: /
     # Make global variables between python files /
 # Use Username or Email as iname: /
@@ -136,16 +147,25 @@ main()
     # Ask user to confirm pin number /
     # Send account info after pin confirmation /
     # If resend, replace original pin with new pin /
-# If forget credentials
-    # Use email to send random code
+# If forget credentials:
+    # Use email to send random code 
     # Ask to enter new password twice
     # Edit account credentials on csv
-# Once login
+# Once login:
     # Display information
-    # Allow to edit information
+    # Allow to edit information:
+        # Ask to login again
+        # Ask what to edit, or if done
+        # Replace table credentials with new data
 # Encrypt database using cryptography module
     # Username encryption is different to password encryption
     # Decryption tool is saved but not shown
-# Implement this code into HTML
-# Make a login webpage
-# Make a database server using rasberry pi
+# Implement this code into HTML:
+    # Make a login webpage
+    # Make a "captive portal" popup
+# Make a database server using rasberry pi:
+    # Install Node.js
+    # Create / read csv files
+    # Link node.js file with webpage
+# Portforward:
+    # Allow the website to be hosted with a domain
