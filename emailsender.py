@@ -102,11 +102,42 @@ def lastemail():
 
     msg.attach(part2)
 
-    # Send the message via gmail's regular server, over SSL - passwords are being sent, afterall
     s = smtplib.SMTP_SSL('smtp.gmail.com')
-    # uncomment if interested in the actual smtp conversation
-    # s.set_debuglevel(1)
-    # do the smtp auth; sends ehlo if it hasn't been sent already
+
+    s.login(me, my_password)
+
+    s.sendmail(me, you, msg.as_string())
+    s.quit()
+
+    print("Sent!")
+
+def forgetemail():
+    settings.search()
+    me = "automation_email"
+    my_password = r"automation_password"
+    you = (settings.CEmail)
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = "Confirmation number"
+    msg['From'] = me
+    msg['To'] = you
+
+
+    html = """\
+    <html>
+    <body>
+     <p>Hello {userna},
+     </p>
+     <p>Your confirmation code is: {pin}
+     </p>
+    </body>
+    </html>""".format(pin=settings.pin,userna=settings.CName)
+    part2 = MIMEText(html, 'html')
+
+    msg.attach(part2)
+
+    s = smtplib.SMTP_SSL('smtp.gmail.com')
+    
     s.login(me, my_password)
 
     s.sendmail(me, you, msg.as_string())
